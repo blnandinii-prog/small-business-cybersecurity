@@ -1,0 +1,41 @@
+
+body {
+    background-color: #f4f7fb;
+    font-family: Arial, sans-serif;
+    margin: 40px;
+}
+
+h1 {
+    color: #17365d;
+}
+
+h2 {
+    color: #24527a;
+}
+
+p {
+    color: #444444;
+}
+
+button {
+    background-color: #17365d;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* Style the URL input box */
+input {
+    padding: 12px;
+    width: 300px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+/* Add a hover effect to the button */
+button:hover {
+    background-color: #24527a;
+}
