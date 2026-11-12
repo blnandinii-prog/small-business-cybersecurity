@@ -1,0 +1,40 @@
+# Development Progress – 12 November 2026
+
+## Small Business Cybersecurity
+
+### Today's Progress
+
+Continued development of the URL-based threat detection system, focusing on backend integration and frontend-to-backend communication.
+
+### Work Completed
+
+- Configured environment variables using `dotenv` to securely manage API credentials.
+- Integrated the URLhaus API authentication mechanism into the Node.js backend.
+- Implemented a POST `/analyse` endpoint to receive and validate submitted URLs.
+- Added HTTP and HTTPS URL validation.
+- Implemented API request handling using Node.js Fetch.
+- Connected the frontend Analyse button to the backend using JavaScript Fetch API.
+- Added frontend result handling for malicious URL matches and URLs with no matching records.
+
+### Testing and Debugging
+
+- Successfully started the local Node.js server.
+- Confirmed that the frontend sends requests to the backend.
+- Verified a successful HTTP 200 response for the `/analyse` request in Chrome Developer Tools.
+- Identified a mismatch between the expected URLhaus response and the message currently displayed on the website.
+
+### Current Status
+
+**Backend integration and frontend communication:** Implemented, pending end-to-end verification.
+
+**URLhaus threat detection:** Integration code added; live API response and threat classification still require testing.
+
+### Next Steps
+
+1. Investigate the unexpected backend response.
+2. Verify successful authentication with URLhaus.
+3. Test the scanner using appropriate test URLs.
+4. Improve threat classification and error handling.
+5. Refine the user interface and display of scan results.
+
+*Development is ongoing.*

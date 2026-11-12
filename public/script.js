@@ -1,37 +1,43 @@
 
-const button = document.getElementById("analyseButton");
-const input = document.getElementById("urlInput");
+const urlInput = document.getElementById("urlInput");
+const analyseButton = document.getElementById("analyseButton");
 const result = document.getElementById("result");
 
-button.addEventListener("click", async function () {
+analyseButton.addEventListener("click", async () => {
+    const enteredURL = urlInput.value.trim();
 
-    const enteredURL = input.value.trim();
-
-    if (enteredURL === "") {
-        result.textContent = "Please enter a URL first.";
+    if (!enteredURL) {
+        result.textContent = "Please enter a URL to analyse.";
         return;
     }
 
+    let parsedURL;
+
     try {
-        const parsedURL = new URL(enteredURL);
+        parsedURL = new URL(enteredURL);
 
-        if (
-            parsedURL.protocol !== "http:" &&
-            parsedURL.protocol !== "https:"
-        ) {
-            result.textContent = "Please enter a valid HTTP or HTTPS URL.";
-            return;
+        if (!["http:", "https:"].includes(parsedURL.protocol)) {
+            throw new Error("Only HTTP and HTTPS URLs are accepted.");
         }
+    } catch (error) {
+        result.textContent = error.message === "Invalid URL"
+            ? "Please enter a valid URL, including https://"
+            : error.message;
+        return;
+    }
 
-        result.textContent = "Sending URL to the backend...";
+    analyseButton.disabled = true;
+    analyseButton.textContent = "Analysing...";
+    result.textContent = "Checking URL against the URLhaus threat database...";
 
-        const response = await fetch("http://localhost:3000/analyse", {
+    try {
+        const response = await fetch("/analyse", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                url: enteredURL
+                url: parsedURL.href
             })
         });
 
@@ -41,12 +47,21 @@ button.addEventListener("click", async function () {
             throw new Error(data.message || "Something went wrong.");
         }
 
-        result.textContent =
-            "Backend response: " + data.message +
-            " | URL: " + data.url;
+        if (data.threat) {
+            result.textContent =
+                "HIGH RISK: " + data.message;
+        } else if (data.queryStatus === "no_results") {
+            result.textContent =
+                "NO MATCH FOUND: " + data.message +
+                " This does not guarantee that the URL is safe.";
+        } else {
+            result.textContent = data.message;
+        }
 
     } catch (error) {
         result.textContent = "Error: " + error.message;
+    } finally {
+        analyseButton.disabled = false;
+        analyseButton.textContent = "Analyse URL";
     }
-
 });
