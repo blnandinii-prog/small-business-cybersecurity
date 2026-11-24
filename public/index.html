@@ -1,36 +1,1049 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080f1d">
+  <title>CyberShield | Small Business Cybersecurity</title>
+  <link rel="stylesheet" href="style.css">
 
-    <title>Small Business Cybersecurity</title>
+  <style>
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
 
-    <!-- Connect CSS file -->
-    <link rel="stylesheet" href="style.css">
+    body {
+      margin: 0;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(8,15,29,.96);
+      border-bottom: 1px solid rgba(148,163,184,.18);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-wrap {
+      max-width: 1160px;
+      margin: auto;
+      min-height: 78px;
+      padding: 0 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .brand {
+      color: #eaf3ff;
+      text-decoration: none;
+      font-size: 22px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .brand span {
+      color: #32d5e7;
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 26px;
+      flex-wrap: wrap;
+    }
+
+    .main-nav a,
+    .nav-cta {
+      color: #aebdd2;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .main-nav a:hover,
+    .main-nav a.active {
+      color: #32d5e7;
+    }
+
+    .nav-cta,
+    .primary-btn {
+      display: inline-block;
+      padding: 13px 20px;
+      border-radius: 9px;
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      background: linear-gradient(110deg,#347cf5,#28c5d5);
+      border: 0;
+      cursor: pointer;
+    }
+
+    .container {
+      width: min(1100px, calc(100% - 40px));
+      margin: auto;
+    }
+
+    .section {
+      padding: 76px 0;
+    }
+
+    .eyebrow {
+      color: #31d5e7;
+      letter-spacing: 2px;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .section h2 {
+      color: #f1f6ff;
+      font-size: clamp(28px,4vw,40px);
+      margin: 12px 0;
+    }
+
+    .muted {
+      color: #9eb1ca;
+      line-height: 1.7;
+    }
+
+    .hero {
+      padding: 105px 0 90px;
+      background: radial-gradient(
+        ellipse at 80% 20%,
+        rgba(31,113,190,.2),
+        transparent 45%
+      );
+    }
+
+    .hero h1 {
+      color: #f4f8ff;
+      font-size: clamp(42px,7vw,70px);
+      line-height: 1.06;
+      max-width: 760px;
+      margin: 18px 0;
+      letter-spacing: -2px;
+    }
+
+    .hero h1 span {
+      color: #36d2e2;
+    }
+
+    .hero p {
+      max-width: 650px;
+      font-size: 17px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .secondary-btn {
+      display: inline-block;
+      padding: 12px 18px;
+      border: 1px solid #3b5878;
+      border-radius: 9px;
+      color: #dceaff;
+      text-decoration: none;
+    }
+
+    .feature-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px;
+      margin-top: 35px;
+      color: #b8c8dc;
+      font-size: 13px;
+    }
+
+    .panel {
+      background: #101c2e;
+      border: 1px solid rgba(148,163,184,.17);
+      border-radius: 16px;
+      padding: 28px;
+    }
+
+    .tool-grid,
+    .learn-grid,
+    .history-stats {
+      display: grid;
+      grid-template-columns: repeat(3,minmax(0,1fr));
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .tool-card,
+    .learn-card,
+    .stat-card {
+      background: #111f34;
+      border: 1px solid rgba(148,163,184,.15);
+      border-radius: 13px;
+      padding: 23px;
+    }
+
+    .tool-card h3,
+    .learn-card h3 {
+      color: #f1f6ff;
+      margin: 10px 0;
+    }
+
+    .tool-card p,
+    .learn-card p {
+      color: #9eb1ca;
+      line-height: 1.6;
+    }
+
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.8fr;
+      gap: 28px;
+      margin-top: 28px;
+    }
+
+    .score-panel {
+      text-align: center;
+      background: #15243b;
+      border-radius: 14px;
+      padding: 30px 18px;
+    }
+
+    .score-number {
+      color: white;
+      font-size: 42px;
+      font-weight: 800;
+    }
+
+    .score-number small {
+      font-size: 13px;
+      color: #9eb1ca;
+      font-weight: 500;
+    }
+
+    .action-list {
+      padding-left: 20px;
+      color: #e8f0fc;
+      line-height: 1.7;
+    }
+
+    .action-list li {
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(148,163,184,.15);
+    }
+
+    .stat-card strong {
+      display: block;
+      color: #f5f8ff;
+      font-size: 28px;
+      margin-top: 8px;
+    }
+
+    .stat-card span {
+      color: #9eb1ca;
+      font-size: 13px;
+    }
+
+    .history-chart {
+      min-height: 155px;
+      display: flex;
+      align-items: end;
+      gap: 14px;
+      padding: 20px 8px 4px;
+      border-bottom: 1px solid #34445d;
+    }
+
+    .history-bar-wrap {
+      flex: 1;
+      min-width: 20px;
+      text-align: center;
+      color: #aebdd2;
+      font-size: 11px;
+    }
+
+    .history-bar {
+      width: min(44px,80%);
+      min-height: 4px;
+      margin: 0 auto 8px;
+      border-radius: 6px 6px 0 0;
+      background: linear-gradient(#35d6e6,#347cf5);
+    }
+
+    .history-entry {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      padding: 17px 0;
+      border-bottom: 1px solid rgba(148,163,184,.15);
+      color: #e8f0fc;
+    }
+
+    .history-entry small {
+      display: block;
+      color: #9eb1ca;
+      margin-top: 5px;
+    }
+
+    .status-pill {
+      border: 1px solid #36536e;
+      border-radius: 30px;
+      padding: 6px 11px;
+      color: #9fe7ee;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .form-card {
+      max-width: 760px;
+      margin-top: 28px;
+    }
+
+    .field-label {
+      display: block;
+      color: #dceaff;
+      margin: 18px 0 8px;
+      font-weight: 700;
+    }
+
+    input[type="url"],
+    input[type="text"] {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 14px;
+      border-radius: 8px;
+      border: 1px solid #40536e;
+      background: #0b1525;
+      color: white;
+    }
+
+    .check-row {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      color: #dce7f6;
+      padding: 12px 0;
+    }
+
+    .check-row input {
+      margin-top: 4px;
+      accent-color: #31cddd;
+    }
+
+    .result-box {
+      margin-top: 18px;
+      color: #c6d7eb;
+    }
+
+    .footer {
+      border-top: 1px solid rgba(148,163,184,.18);
+      padding: 35px 20px;
+      color: #9eb1ca;
+      text-align: center;
+    }
+
+    @media(max-width:800px) {
+      .nav-wrap {
+        padding: 14px 18px;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .main-nav {
+        justify-content: flex-start;
+        gap: 14px;
+      }
+
+      .overview-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tool-grid,
+      .learn-grid,
+      .history-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .section {
+        padding: 55px 0;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-    <h1>Small Business Cybersecurity</h1>
+  <!-- NAVIGATION -->
+  <header class="site-header">
+    <div class="nav-wrap">
 
-    <p>Cybersecurity made accessible for small businesses.</p>
+      <a class="brand" href="#home">
+        ✦ Cyber<span>Shield</span>
+      </a>
 
-    <h2>Check a Suspicious Link</h2>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#dashboard">Dashboard</a>
+        <a href="#history">History</a>
+        <a href="#scanner">URL Scanner</a>
+        <a href="#checkup">Security Checkup</a>
+        <a href="#learn">Learn</a>
+      </nav>
 
-    <p>Paste a link below to understand whether it may be suspicious.</p>
+      <a class="nav-cta" href="#scanner">
+        Get Protected ↗
+      </a>
 
-    <input
-        type="text"
-        id="urlInput"
-        placeholder="Paste your URL here"
-    >
+    </div>
+  </header>
 
-    <button id="analyseButton">Analyse Link</button>
+  <main>
 
-    <p id="result"></p>
-<script src="script.js"></script>
+    <!-- HOME -->
+    <section class="hero" id="home">
+      <div class="container">
+
+        <div class="eyebrow">
+          Cybersecurity, made simpler
+        </div>
+
+        <h1>
+          Your business.<br>
+          Your data.<br>
+          <span>Your security.</span>
+        </h1>
+
+        <p class="muted">
+          Powerful, accessible cybersecurity tools designed
+          to help small businesses stay one step ahead of
+          digital threats.
+        </p>
+
+        <div class="hero-actions">
+          <a class="primary-btn" href="#scanner">
+            Scan a Website ↗
+          </a>
+
+          <a class="secondary-btn" href="#checkup">
+            Explore Security Tools
+          </a>
+        </div>
+
+        <div class="feature-row">
+          <span>✓ Easy to use</span>
+          <span>✓ Built for small businesses</span>
+          <span>✓ Security awareness</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- DASHBOARD -->
+    <section class="section" id="dashboard">
+      <div class="container">
+
+        <div class="eyebrow">Your security hub</div>
+
+        <h2>Security at a glance.</h2>
+
+        <p class="muted">
+          Everything you need to take the first step towards
+          a safer business.
+        </p>
+
+        <div class="tool-grid">
+
+          <article class="tool-card">
+            <div class="eyebrow">◎ Security tools</div>
+            <h3>03</h3>
+            <p>Explore available tools</p>
+          </article>
+
+          <article class="tool-card">
+            <div class="eyebrow">⌕ URL scanner</div>
+            <h3>Active</h3>
+            <p>Ready to analyse links</p>
+          </article>
+
+          <article class="tool-card">
+            <div class="eyebrow">◇ Security checkup</div>
+            <h3>Ready</h3>
+            <p>Assess your business</p>
+          </article>
+
+        </div>
+
+        <div class="panel" style="margin-top:28px">
+
+          <div class="eyebrow">Security health</div>
+
+          <h2 style="font-size:28px">
+            Your security overview
+          </h2>
+
+          <p class="muted">
+            Understand your business security progress.
+          </p>
+
+          <div class="overview-grid">
+
+            <div class="score-panel">
+
+              <div id="dashboardScore" class="score-number">
+                --<small> / 100</small>
+              </div>
+
+              <h3 style="color:#f1f6ff">
+                Security score
+              </h3>
+
+              <p id="dashboardStatus" class="muted">
+                Complete your security checkup to receive a score.
+              </p>
+
+            </div>
+
+            <div>
+
+              <h3 style="color:#f1f6ff">
+                Recommended security actions
+              </h3>
+
+              <ol class="action-list" id="dashboardRecommendations">
+
+                <li>
+                  <strong>Enable two-factor authentication</strong><br>
+                  <span class="muted">
+                    Add an extra layer of protection to business accounts.
+                  </span>
+                </li>
+
+                <li>
+                  <strong>Back up important business data</strong><br>
+                  <span class="muted">
+                    Keep secure copies of important files and records.
+                  </span>
+                </li>
+
+                <li>
+                  <strong>Improve employee awareness</strong><br>
+                  <span class="muted">
+                    Teach employees to recognise suspicious emails and links.
+                  </span>
+                </li>
+
+              </ol>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ASSESSMENT HISTORY -->
+    <section class="section" id="history">
+      <div class="container">
+
+        <div class="eyebrow">Your security journey</div>
+
+        <h2>Assessment history.</h2>
+
+        <p class="muted">
+          Review previous checkups and track your business
+          security progress over time.
+        </p>
+
+        <div class="history-stats">
+
+          <div class="stat-card">
+            <span>Total assessments</span>
+            <strong id="historyTotal">—</strong>
+          </div>
+
+          <div class="stat-card">
+            <span>Latest score</span>
+            <strong id="historyLatest">—</strong>
+          </div>
+
+          <div class="stat-card">
+            <span>Previous score</span>
+            <strong id="historyPrevious">—</strong>
+          </div>
+
+        </div>
+
+        <div class="panel" style="margin-top:22px">
+
+          <h3 style="color:#f1f6ff">
+            Score trend
+          </h3>
+
+          <div id="historyChart" class="history-chart">
+            <p class="muted">Loading assessment history…</p>
+          </div>
+
+        </div>
+
+        <div class="panel" style="margin-top:22px">
+
+          <h3 style="color:#f1f6ff">
+            Past assessments
+          </h3>
+
+          <p class="muted">
+            Your most recent assessments appear first.
+          </p>
+
+          <div id="historyList" aria-live="polite">
+            <p class="muted">Loading assessment history…</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- URL SCANNER -->
+    <section class="section" id="scanner">
+      <div class="container">
+
+        <div class="eyebrow">
+          01 / Website protection
+        </div>
+
+        <h2>Not every link is what it seems.</h2>
+
+        <p class="muted">
+          Suspicious links can expose your business to phishing
+          and malware. Check a URL before clicking or sharing it.
+        </p>
+
+        <div class="panel form-card">
+
+          <div class="eyebrow">
+            URL security scanner
+          </div>
+
+          <h3 style="color:#f1f6ff">
+            Analyse a website
+          </h3>
+
+          <p class="muted">
+            Enter the complete website address below.
+          </p>
+
+          <form id="scanForm">
+
+            <label class="field-label" for="urlInput">
+              Website URL
+            </label>
+
+            <input
+              id="urlInput"
+              name="url"
+              type="url"
+              placeholder="https://example.com"
+              required
+            >
+
+            <button
+              class="primary-btn"
+              type="submit"
+              style="margin-top:16px"
+            >
+              Analyse Website →
+            </button>
+
+          </form>
+
+          <div id="scanResult" class="result-box" aria-live="polite">
+            ◈ Your scan results will appear here.
+          </div>
+
+          <p class="muted" style="font-size:12px">
+            Results are based on available threat intelligence.
+            A clean result does not guarantee a website is safe.
+          </p>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECURITY CHECKUP -->
+    <section class="section" id="checkup">
+      <div class="container">
+
+        <div class="eyebrow">
+          02 / Business security
+        </div>
+
+        <h2>How secure is your business?</h2>
+
+        <p class="muted">
+          Small habits can make a big difference.
+          Start with a security checkup.
+        </p>
+
+        <div class="tool-grid">
+
+          <article class="tool-card">
+            <div class="eyebrow">01 / Password security</div>
+            <h3>Protect business accounts.</h3>
+            <p>
+              Learn how to create strong passwords and protect
+              business accounts.
+            </p>
+          </article>
+
+          <article class="tool-card">
+            <div class="eyebrow">02 / Data protection</div>
+            <h3>Protect important data.</h3>
+            <p>
+              Understand backups, access controls and safe
+              data practices.
+            </p>
+          </article>
+
+          <article class="tool-card">
+            <div class="eyebrow">03 / Employee awareness</div>
+            <h3>Recognise cyber threats.</h3>
+            <p>
+              Identify common cyber threats and build safer
+              workplace habits.
+            </p>
+          </article>
+
+        </div>
+
+        <div class="panel form-card" style="margin-top:28px">
+
+          <h3 style="color:#f1f6ff">
+            Your business security checkup
+          </h3>
+
+          <p class="muted">
+            Select the statements that are currently true
+            for your business.
+          </p>
+
+          <button
+            id="startCheckup"
+            class="primary-btn"
+            type="button"
+          >
+            Start security checkup
+          </button>
+
+          <div id="checkupArea" hidden>
+
+            <label class="check-row">
+              <input class="security-answer" type="checkbox" value="1">
+              We use strong, unique passwords for business accounts.
+            </label>
+
+            <label class="check-row">
+              <input class="security-answer" type="checkbox" value="1">
+              We enable two-factor authentication where available.
+            </label>
+
+            <label class="check-row">
+              <input class="security-answer" type="checkbox" value="1">
+              We regularly back up important business data.
+            </label>
+
+            <label class="check-row">
+              <input class="security-answer" type="checkbox" value="1">
+              Our software and devices are kept up to date.
+            </label>
+
+            <label class="check-row">
+              <input class="security-answer" type="checkbox" value="1">
+              Employees are trained to identify phishing attempts.
+            </label>
+
+            <label class="check-row">
+              <input class="security-answer" type="checkbox" value="1">
+              Access to sensitive information is restricted.
+            </label>
+
+            <button
+              id="calculateScore"
+              class="primary-btn"
+              type="button"
+              style="margin-top:16px"
+            >
+              Calculate my score
+            </button>
+
+          </div>
+
+          <div id="scoreResult" class="result-box" aria-live="polite"></div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- LEARNING CENTRE -->
+    <section class="section" id="learn">
+      <div class="container">
+
+        <div class="eyebrow">
+          03 / Knowledge is protection
+        </div>
+
+        <h2>Learn to stay protected.</h2>
+
+        <p class="muted">
+          Cybersecurity doesn't have to be complicated.
+          Start with the essentials.
+        </p>
+
+        <div class="learn-grid">
+
+          <article class="learn-card">
+            <div class="eyebrow">✉ Phishing awareness</div>
+            <h3>Can you spot a fake email?</h3>
+            <p>
+              Learn to identify suspicious messages, links and requests.
+            </p>
+          </article>
+
+          <article class="learn-card">
+            <div class="eyebrow">⌑ Password safety</div>
+            <h3>Your first line of defence.</h3>
+            <p>
+              Understand password managers, strong passwords and 2FA.
+            </p>
+          </article>
+
+          <article class="learn-card">
+            <div class="eyebrow">◈ Data protection</div>
+            <h3>Protect what matters.</h3>
+            <p>
+              Discover simple ways to protect valuable business information.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CALL TO ACTION -->
+    <section class="section">
+      <div class="container panel">
+
+        <div class="eyebrow">
+          04 / Your security journey
+        </div>
+
+        <h2>Make informed decisions.</h2>
+
+        <p class="muted">
+          Your next step towards better cybersecurity starts
+          with understanding the risks and taking action.
+        </p>
+
+        <a class="primary-btn" href="#scanner">
+          Run your first scan →
+        </a>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+
+    <a class="brand" href="#home">
+      ✦ Cyber<span>Shield</span>
+    </a>
+
+    <p>
+      Making cybersecurity more accessible for small businesses.
+    </p>
+
+    <small>
+      © 2026 CyberShield. Educational project.
+    </small>
+
+  </footer>
+
+  <!-- ASSESSMENT HISTORY SCRIPT -->
+  <script>
+    (function () {
+
+      const byId = (id) => document.getElementById(id);
+
+      const safeDate = (value) => {
+        const date = new Date(value);
+
+        return Number.isNaN(date.getTime())
+          ? "Date unavailable"
+          : date.toLocaleString();
+      };
+
+      async function loadAssessmentHistory() {
+
+        const list = byId("historyList");
+        const chart = byId("historyChart");
+
+        if (!list || !chart) return;
+
+        try {
+
+          const response = await fetch(
+            "/api/assessment-history",
+            {
+              headers: {
+                "Accept": "application/json"
+              }
+            }
+          );
+
+          if (!response.ok) {
+            throw new Error(
+              "History request failed (" + response.status + ")"
+            );
+          }
+
+          const data = await response.json();
+
+          if (
+            !data ||
+            data.success !== true ||
+            !Array.isArray(data.assessments)
+          ) {
+            throw new Error("Unexpected history response");
+          }
+
+          const items = data.assessments;
+
+          byId("historyTotal").textContent =
+            String(data.total ?? items.length);
+
+          byId("historyLatest").textContent =
+            items.length ? String(items[0].score) + "/100" : "—";
+
+          byId("historyPrevious").textContent =
+            items.length > 1
+              ? String(items[1].score) + "/100"
+              : "—";
+
+          list.replaceChildren();
+          chart.replaceChildren();
+
+          if (!items.length) {
+
+            list.textContent =
+              "No assessments yet. Complete a Security Checkup to begin your history.";
+
+            chart.textContent =
+              "Score trend is currently unavailable.";
+
+            return;
+          }
+
+          items.forEach((item) => {
+
+            const row = document.createElement("div");
+            row.className = "history-entry";
+
+            const details = document.createElement("div");
+
+            const heading = document.createElement("strong");
+
+            heading.textContent =
+              "Security assessment — " +
+              Number(item.score) +
+              "/100";
+
+            const date = document.createElement("small");
+
+            date.textContent = safeDate(item.completedAt);
+
+            details.append(heading, date);
+
+            const status = document.createElement("span");
+            status.className = "status-pill";
+
+            status.textContent =
+              item.status ||
+              (
+                item.score >= 80
+                  ? "Good"
+                  : item.score >= 50
+                    ? "Moderate"
+                    : "At Risk"
+              );
+
+            row.append(details, status);
+            list.append(row);
+
+          });
+
+          items.slice(0, 10).reverse().forEach((item) => {
+
+            const wrap = document.createElement("div");
+            wrap.className = "history-bar-wrap";
+
+            const bar = document.createElement("div");
+            bar.className = "history-bar";
+
+            bar.style.height =
+              Math.max(
+                4,
+                Math.min(100, Number(item.score) || 0)
+              ) + "px";
+
+            bar.title = "Score: " + item.score;
+
+            const label = document.createElement("span");
+            label.textContent = String(item.score);
+
+            wrap.append(bar, label);
+            chart.append(wrap);
+
+          });
+
+        } catch (error) {
+
+          list.textContent =
+            "Unable to load assessment history. Make sure the CyberShield server is running and refresh this page.";
+
+          chart.textContent =
+            "Score trend is currently unavailable.";
+
+          console.error("Assessment history:", error);
+
+        }
+      }
+
+      window.addEventListener(
+        "DOMContentLoaded",
+        loadAssessmentHistory
+      );
+
+      document.addEventListener(
+        "visibilitychange",
+        () => {
+          if (!document.hidden) {
+            loadAssessmentHistory();
+          }
+        }
+      );
+
+    })();
+  </script>
+
+  <!-- YOUR EXISTING JAVASCRIPT -->
+  <script src="script.js"></script>
+
 </body>
 </html>
